@@ -28,7 +28,7 @@ const covid19ImpactEstimator = (data) => {
   const sImpactHospitalBedsByRequestedTime = numberOfAvailableBeds - sImpactCasesByRequestedTime;
 
   // Challenge 3
-  const sICU = 0.5 * sInfectionsByRequestedTime;
+  const sICU = 0.5 * sInfectionsByRequestedTime * 0.1;
   const sCasesForICUByRequestedTime = sICU;
   const sIICU = 0.5 * sImpactInfectionsByRequestedTime;
   const sImpactCasesForICUByRequestedTime = sIICU;
