@@ -17,7 +17,7 @@ function vent(container) {
 }
 
 function icu(container) {
-  Math.trunc(0.05 * container.infectionsByRequestedTime);
+  return Math.trunc(0.05 * container.infectionsByRequestedTime);
 }
 
 function dollarsInFlight(container, avgIncome, income, inDays) {
