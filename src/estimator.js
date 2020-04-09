@@ -1,67 +1,76 @@
 const { getTimeInDays } = require('./helper');
 
+function hosBeds(avBed, container) {
+  return Math.trunc(avBed - container.severeCasesByRequestedTime);
+}
+
+function infections(container, factor) {
+  return container.currentlyInfected * (2 ** factor);
+}
+
+function severeCases(container) {
+  return Math.trunc(0.15 * (container.infectionsByRequestedTime));
+}
+
+function vent(container) {
+  return Math.trunc(0.02 * container.infectionsByRequestedTime);
+}
+
+function icu(container) {
+  Math.trunc(0.05 * container.infectionsByRequestedTime);
+}
+
+function dollarsInFlight(container, avgIncome, income, inDays) {
+  return Math.trunc(container.infectionsByRequestedTime * avgIncome * income * inDays);
+}
+
+const computeCurrentlyInfected = (field, value) => field * value;
+
 const covid19ImpactEstimator = (data) => {
   const {
-    periodType,
-    timeToElapse,
+    periodType: period,
+    timeToElapse: time,
     reportedCases,
-    totalHospitalBeds,
+    totalHospitalBeds: beds,
     region: {
-      avgDailyIncomeInUSD,
-      avgDailyIncomePopulation: avd
+      avgDailyIncomeInUSD: income,
+      avgDailyIncomePopulation: avgIncome
     }
   } = data;
 
+  const impact = {};
+  const severeImpact = {};
+
   // Challenge 1
-  const severeCurrentlyInfected = reportedCases * 10;
-  const severeImpactCurrentlyInfected = reportedCases * 50;
-  let factor = getTimeInDays(periodType, timeToElapse) / 3;
-  factor = Math.trunc(factor);
-  const timeInDays = 2 ** factor;
-  const sInfectionsByRequestedTime = severeCurrentlyInfected * timeInDays;
-  const sImpactInfectionsByRequestedTime = severeImpactCurrentlyInfected * timeInDays;
+  impact.currentlyInfected = computeCurrentlyInfected(reportedCases, 10);
+  severeImpact.currentlyInfected = computeCurrentlyInfected(reportedCases, 50);
+
+  const inDays = getTimeInDays(period, time);
+  const factor = Math.trunc(inDays / 3);
+
+  impact.infectionsByRequestedTime = infections(impact, factor);
+  severeImpact.infectionsByRequestedTime = infections(severeImpact, factor);
 
   // Challenge 2
-  const sCasesByRequestedTime = Math.trunc(0.15 * sInfectionsByRequestedTime);
-  const sImpactCasesByRequestedTime = Math.trunc(0.15 * sImpactInfectionsByRequestedTime);
-  const nOfAvailableBeds = 0.35 * totalHospitalBeds;
-  const sHospitalBedsByRequestedTime = Math.trunc(nOfAvailableBeds - sCasesByRequestedTime);
-  const sImpactHospitalBedsByRT = Math.trunc(nOfAvailableBeds - sImpactCasesByRequestedTime);
+  impact.severeCasesByRequestedTime = severeCases(impact);
+  severeImpact.severeCasesByRequestedTime = severeCases(severeImpact);
+
+  const avBed = 0.35 * beds;
+  impact.hospitalBedsByRequestedTime = hosBeds(avBed, impact);
+  severeImpact.hospitalBedsByRequestedTime = hosBeds(avBed, severeImpact);
 
   // Challenge 3
-  const sICU = Math.trunc(0.05 * sInfectionsByRequestedTime);
-  const sIICU = Math.trunc(0.05 * sImpactInfectionsByRequestedTime);
-
-  const sCasesForICUByRequestedTime = sICU;
-  const sImpactCasesForICUByRequestedTime = sIICU;
-
-  const sCasesForVenBRT = Math.trunc(0.02 * sInfectionsByRequestedTime);
-  const sImpactCasesForVenBRT = Math.trunc(0.02 * sImpactInfectionsByRequestedTime);
-
-  const usd = avd * avgDailyIncomeInUSD * getTimeInDays(periodType, timeToElapse);
-  const sDollarsInFlight = +(sInfectionsByRequestedTime * usd).toFixed(2);
-  const sImpactDollarsInFlight = +(sImpactInfectionsByRequestedTime * usd).toFixed(2);
+  impact.casesForICUByRequestTime = icu(impact);
+  severeImpact.casesForICUByRequestTime = icu(severeImpact);
+  impact.casesForVentilationsByRequestTime = vent(impact);
+  severeImpact.casesForVentilationsByRequestTime = vent(severeImpact);
+  impact.dollarsInFlight = dollarsInFlight(impact, avgIncome, income, inDays);
+  severeImpact.dollarsInFlight = dollarsInFlight(severeImpact, avgIncome, income, inDays);
 
   return {
     data,
-    impact: {
-      currentlyInfected: severeCurrentlyInfected,
-      infectionsByRequestedTime: sInfectionsByRequestedTime,
-      severeCasesByRequestedTime: sCasesByRequestedTime,
-      hospitalBedsByRequestedTime: sHospitalBedsByRequestedTime,
-      casesForICUByRequestedTime: sCasesForICUByRequestedTime,
-      casesForVentilatorsByRequestedTime: sCasesForVenBRT,
-      dollarsInFlight: sDollarsInFlight
-    },
-    severeImpact: {
-      currentlyInfected: severeImpactCurrentlyInfected,
-      infectionsByRequestedTime: sImpactInfectionsByRequestedTime,
-      severeCasesByRequestedTime: sImpactCasesByRequestedTime,
-      hospitalBedsByRequestedTime: sImpactHospitalBedsByRT,
-      casesForICUByRequestedTime: sImpactCasesForICUByRequestedTime,
-      casesForVentilatorsByRequestedTime: sImpactCasesForVenBRT,
-      dollarsInFlight: sImpactDollarsInFlight
-    }
+    impact,
+    severeImpact
   };
 };
 
