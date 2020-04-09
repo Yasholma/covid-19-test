@@ -33,8 +33,8 @@ const covid19ImpactEstimator = (data) => {
   const sIICU = Math.trunc(0.05 * sImpactInfectionsByRequestedTime);
   const sImpactCasesForICUByRequestedTime = sIICU;
 
-  const sCasesForVentilatorsByRequestedTime = 0.02 * sInfectionsByRequestedTime;
-  const sImpactCasesForVentilatorsByRequestedTime = 0.02 * sImpactInfectionsByRequestedTime;
+  const sCasesForVentilatorsByRequestedTime = Math.trunc(0.02 * sInfectionsByRequestedTime);
+  const sImpactCasesForVenBRT = Math.trunc(0.02 * sImpactInfectionsByRequestedTime);
 
   const inUSD = (avgDailyIncomeInUSD * timeToElapse);
   const sDollarsInFlight = +(sInfectionsByRequestedTime * inUSD).toFixed(2);
@@ -57,7 +57,7 @@ const covid19ImpactEstimator = (data) => {
       severeCasesByRequestedTime: sImpactCasesByRequestedTime,
       hospitalBedsByRequestedTime: sImpactHospitalBedsByRT,
       casesForICUByRequestedTime: sImpactCasesForICUByRequestedTime,
-      casesForVentilatorsByRequestedTime: sImpactCasesForVentilatorsByRequestedTime,
+      casesForVentilatorsByRequestedTime: sImpactCasesForVenBRT,
       dollarsInFlight: sImpactDollarsInFlight
     }
   };
