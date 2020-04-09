@@ -5,11 +5,11 @@ const covid19ImpactEstimator = (data) => {
     periodType,
     timeToElapse,
     reportedCases,
-    totalHospitalBeds,
-    region: {
-      avgDailyIncomeInUSD,
-      avgDailyIncomePopulation
-    }
+    totalHospitalBeds
+    // region: {
+    //   avgDailyIncomeInUSD,
+    //   avgDailyIncomePopulation
+    // }
   } = data;
 
   // Challenge 1
@@ -40,9 +40,9 @@ const covid19ImpactEstimator = (data) => {
   const sCasesForVenBRT = Math.trunc(0.02 * sInfectionsBRT);
   const sImpactCasesForVenBRT = Math.trunc(0.02 * sIInfectionsBRT);
 
-  const inUSD = avgDailyIncomeInUSD * avgDailyIncomePopulation * timeInDays;
-  const sDollarsInFlight = +(sInfectionsByRequestedTime * inUSD).toFixed(2);
-  const sImpactDollarsInFlight = +(sImpactInfectionsByRequestedTime * inUSD).toFixed(2);
+  // const inUSD = avgDailyIncomeInUSD * avgDailyIncomePopulation * timeInDays;
+  // const sDollarsInFlight = +(sInfectionsByRequestedTime * inUSD).toFixed(2);
+  // const sImpactDollarsInFlight = +(sImpactInfectionsByRequestedTime * inUSD).toFixed(2);
 
   return {
     data,
@@ -53,7 +53,7 @@ const covid19ImpactEstimator = (data) => {
       hospitalBedsByRequestedTime: sHospitalBedsByRequestedTime,
       casesForICUByRequestedTime: sCasesForICUByRequestedTime,
       casesForVentilatorsByRequestedTime: sCasesForVenBRT,
-      dollarsInFlight: sDollarsInFlight
+      dollarsInFlight: 0
     },
     severeImpact: {
       currentlyInfected: severeImpactCurrentlyInfected,
@@ -62,7 +62,7 @@ const covid19ImpactEstimator = (data) => {
       hospitalBedsByRequestedTime: sImpactHospitalBedsByRT,
       casesForICUByRequestedTime: sImpactCasesForICUByRequestedTime,
       casesForVentilatorsByRequestedTime: sImpactCasesForVenBRT,
-      dollarsInFlight: sImpactDollarsInFlight
+      dollarsInFlight: 0
     }
   };
 };
