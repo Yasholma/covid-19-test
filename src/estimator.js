@@ -62,8 +62,8 @@ const covid19ImpactEstimator = (data) => {
   // Challenge 3
   impact.casesForICUByRequestedTime = icu(impact);
   severeImpact.casesForICUByRequestedTime = icu(severeImpact);
-  impact.casesForVentilationsByRequestedTime = vent(impact);
-  severeImpact.casesForVentilationsByRequestedTime = vent(severeImpact);
+  impact.casesForVentilatorsByRequestedTime = vent(impact);
+  severeImpact.casesForVentilatorsByRequestedTime = vent(severeImpact);
   impact.dollarsInFlight = dollarsInFlight(impact, avgIncome, income, inDays);
   severeImpact.dollarsInFlight = dollarsInFlight(severeImpact, avgIncome, income, inDays);
 
