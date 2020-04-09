@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Build For SDG" />
+    <meta name="author" content="Yahaya Hyellamoda Yohanna (Cybertech)" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Build4SDG | Covid-19</title>
+    <!-- Fav Icon -->
+    <link rel=icon type=image/png sizes=32x32 href="images/favicon.png">
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!--  -->
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <a href="./index.html" class="brand__logo"
+          ><img src="./images/andela-logo.png" alt="Logo"
+        /></a>
+      </div>
+      <nav class="nav">
+        <ul class="menu-nav">
+          <li class="menu-nav__item active">
+            <a href="#hero" class="menu-nav__link">Home</a>
+          </li>
+          <li class="menu-nav__item">
+            <a href="#tips" class="menu-nav__link">Prevention Tips</a>
+          </li>
+          <li class="menu-nav__item">
+            <a href="#sponsor" class="menu-nav__link">Sponsor</a>
+          </li>
+        </ul>
+        <div class="nav__btns">
+          <a href="#!" class="btn-primary">Insert Data</a>
+        </div>
+      </nav>
+      <div class="menu-btn">
+        <span class="menu-btn__burger"></span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="hero">
+        <div class="container">
+          <div class="hero__heading">
+            <h2><span>Stay</span> Safe &amp; <span>Stay</span> Home</h2>
+            <button class="btn-primary openModal" type="button">
+              Insert Data
+            </button>
+          </div>
+        </div>
+      </section>
+      <section class="tips" id="tips">
+        <div class="container">
+          <div class="tips__content">
+            <div class="tips__card">
+              <h3 class="tips__heading">Wash your hands</h3>
+              <p class="tips__text">
+                Ensure to wash your hands regularly with soap and water.
+              </p>
+            </div>
+            <div class="tips__card">
+              <h3 class="tips__heading">Use Face Mask</h3>
+              <p class="tips__text">
+                Use of face mask is very important anytime you are stepping out
+                of your apartment.
+              </p>
+            </div>
+            <div class="tips__card">
+              <h3 class="tips__heading">Social Distancing</h3>
+              <p class="tips__text">
+                Practice social distancing to avoid the spraid of the virus.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="modal">
+        <div class="modal__content">
+          <div class="modal__header">
+            <span class="close">X</span>
+            <h3>Enter Data Here...</h3>
+          </div>
+          <div class="modal__body">
+            <form class="modal__form" id="data-form">
+              <div class="modal__form__group">
+                <label for="population">Population</label>
+                <input
+                  id="population"
+                  name="population"
+                  type="number"
+                  data-population
+                  placeholder="Enter Population"
+                  class="modal__form__input"
+                />
+              </div>
+              <div class="modal__form__group">
+                <label for="time-elapse">Time Elapse</label>
+                <input
+                  id="time-elapse"
+                  name="time-elapse"
+                  type="number"
+                  data-time-to-elapse
+                  placeholder="Enter Elapse Time"
+                  class="modal__form__input"
+                />
+              </div>
+              <div class="modal__form__group">
+                <label for="reported-cases">Reported Cases</label>
+                <input
+                  id="reported-cases"
+                  name="reported-cases"
+                  type="number"
+                  data-reported-cases
+                  placeholder="Enter Reported Cases"
+                  class="modal__form__input"
+                />
+              </div>
+              <div class="modal__form__group">
+                <label for="total-hospital-beds">Total Hospital Beds</label>
+                <input
+                  id="total-hospital-beds"
+                  name="total-hospital-beds"
+                  type="number"
+                  data-total-hospital-beds
+                  placeholder="Enter Total Hospital Beds"
+                  class="modal__form__input"
+                />
+              </div>
+              <div class="modal__form__group">
+                <label for="period-type">Period Type</label>
+                <select
+                  id="period-type"
+                  name="period-type"
+                  data-period-type
+                  class="modal__form__select"
+                >
+                  <option value="days">Days</option>
+                  <option value="weeks">Weeks</option>
+                  <option value="months">Months</option>
+                </select>
+              </div>
+              <button type="button" id="estimate-btn" data-go-estimate>
+                Submit Data
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <section class="partner" id="sponsor">
+        <div class="partner__heading">
+          <h3>Sponsored <span>By</span></h3>
+        </div>
+        <div class="partner__content">
+          <button class="btn-primary openModal" type="button">
+            Insert Data
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="attribution">
+          <a href="https://buildforsdg.andela.com/" target="_blank"
+            >BuildForSDG</a
+          >
+          Coded by
+          <a href="https://twitter.com/yasholma" target="_blank"
+            ><span>Yahaya Hyellamoda Yohanna</span></a
+          >.
+        </div>
+      </div>
+    </footer>
+    <!-- Main.js -->
+    <script src="./js/main.js"></script>
+  </body>
+</html>

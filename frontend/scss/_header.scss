@@ -1,0 +1,153 @@
+header {
+  height: 20px;
+  width: 100%;
+  background: $white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  padding: 2.5rem 1rem;
+  z-index: 2;
+
+  .brand {
+    &__logo {
+      color: $primary-color;
+      font-size: 1rem;
+      img {
+        width: 100px;
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+  }
+
+  .nav {
+    position: absolute;
+    top: 15vh;
+    left: 50%;
+    right: 0;
+    background: $primary-color;
+    width: 85%;
+    height: 350px;
+    transform: translateX(-50%) translateY(-200%);
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 3;
+
+    &.open {
+      transform: translateX(-50%) translateY(0);
+      @include transition-ease(400ms);
+    }
+
+    .menu-nav {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      padding-bottom: 1.5rem;
+      box-shadow: inset 0 -1px 0px rgba(#fff, 0.1);
+      width: 85%;
+      @include transition-ease(300ms);
+
+      &__item {
+        margin: 1.3rem 0;
+      }
+
+      &__link {
+        font-weight: 700;
+        font-size: 1.1rem;
+        @include transition-ease(300ms);
+        text-transform: uppercase;
+
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+    }
+
+    &__btns {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
+      a {
+        display: inline-block;
+        margin: 0.8rem 0;
+        @include transition-ease(300ms);
+      }
+
+      .btn-primary {
+        background: $secondary-color;
+        border-radius: 0.35rem;
+        padding: 0.35rem 1rem;
+        font-size: 1.2rem;
+        text-align: center;
+        width: 90%;
+        @include transition-ease(300ms);
+      }
+    }
+  }
+
+  .menu-btn {
+    position: fixed;
+    right: 1rem;
+    top: 1.8rem;
+    height: 20px;
+    width: 28px;
+    cursor: pointer;
+    @include transition-ease(400ms);
+    z-index: 4;
+
+    &__burger {
+      height: 3px;
+      width: 22px;
+      background: $primary-color;
+      position: absolute;
+      top: 0.5rem;
+      border-radius: 5rem;
+      display: inline-block;
+      margin: 0 auto;
+      @include transition-ease(300ms);
+
+      &.open {
+        background: transparent;
+        transform: rotate(360deg);
+        &::before {
+          transform: rotate(45deg) translate(5px, 8px);
+        }
+        &::after {
+          transform: rotate(-45deg) translate(3px, -6.5px);
+        }
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -8px;
+        background: $primary-color;
+        width: 22px;
+        height: 3px;
+        @include transition-ease(400ms);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        background: $primary-color;
+        width: 22px;
+        height: 3px;
+        @include transition-ease(400ms);
+      }
+    }
+  }
+}

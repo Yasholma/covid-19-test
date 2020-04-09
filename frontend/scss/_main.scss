@@ -1,0 +1,157 @@
+.hero {
+  width: 100%;
+  height: 50vh;
+  background: linear-gradient(to right, rgba(#000, 0.4), rgba(#000, 0.4)),
+    url("../images/img-4.jpg") no-repeat;
+  background-size: cover;
+  background-position: center center;
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 18vh;
+
+    h2 {
+      color: $white;
+      text-align: center;
+      font-weight: 800;
+      font-size: 2.4rem;
+      margin: 0;
+      line-height: 1.2;
+      margin-bottom: 2rem;
+
+      span {
+        color: $secondary-color;
+      }
+    }
+
+    .btn-primary {
+      background: $secondary-color;
+      color: $white;
+      border-radius: 0.35rem;
+      padding: 0.35rem 1rem;
+      font-size: 1.2rem;
+      text-align: center;
+      width: 90%;
+      border: 0;
+      @include transition-ease(300ms);
+    }
+  }
+}
+
+.tips {
+  width: 100%;
+  height: 100%;
+  padding: 2rem 0;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  &__card {
+    background: $white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.2rem rgba(#000, 0.1);
+    height: 200px;
+
+    &:nth-child(1) {
+      background: linear-gradient(to right, rgba(#000, 0.5), rgba(#000, 0.6)),
+        url("../images/img-1.jpg") no-repeat;
+      background-size: cover;
+    }
+
+    &:nth-child(2) {
+      background: linear-gradient(to right, rgba(#000, 0.5), rgba(#000, 0.7)),
+        url("../images/img-2.jpg") no-repeat;
+      background-size: cover;
+    }
+
+    &:nth-child(3) {
+      background: linear-gradient(to right, rgba(#000, 0.5), rgba(#000, 0.7)),
+        url("../images/img-3.jpg") no-repeat;
+      background-size: cover;
+    }
+
+    h3 {
+      text-align: center;
+      color: $white;
+      font-weight: 600;
+      padding: 0;
+      padding-bottom: 0.3rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 2px solid darken($color: $white, $amount: 30%);
+    }
+
+    p {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: darken($color: $white, $amount: 10%);
+    }
+  }
+}
+
+.partner {
+  width: 100%;
+  height: 100%;
+
+  &__heading {
+    h3 {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      span {
+        color: $secondary-color;
+      }
+    }
+  }
+
+  &__content {
+    width: 100%;
+    height: 30vh;
+    background: url("../images/background.jpg") no-repeat;
+    background-size: cover;
+    position: relative;
+
+    .btn-primary {
+      background: $secondary-color;
+      color: $white;
+      border-radius: 0.35rem;
+      padding: 0.35rem 1rem;
+      font-size: 1.2rem;
+      text-align: center;
+      width: auto;
+      border: 0;
+      @include transition-ease(300ms);
+      position: absolute;
+      bottom: 1.6rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+footer {
+  width: 100%;
+  height: 60px;
+  background: #000;
+  margin-top: 0rem;
+  margin-bottom: 0;
+  padding-bottom: 0.5rem;
+
+  .attribution {
+    font-size: 0.8rem;
+    padding: 1rem 0 0rem;
+    color: $white;
+    text-align: center;
+  }
+  .attribution a {
+    color: $white;
+    display: inline;
+    span {
+      color: $secondary-color;
+    }
+  }
+}

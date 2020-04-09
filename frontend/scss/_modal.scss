@@ -1,0 +1,154 @@
+.modal {
+  width: 100%;
+  height: 100%;
+  background: rgba($color: #000000, $alpha: 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-100%);
+  @include transition-ease(200ms);
+  z-index: 10;
+  overflow: hidden;
+
+  &.open {
+    transform: translateY(0);
+    @include transition-ease(400ms);
+  }
+
+  &__content {
+    background: $white;
+    padding: 1rem 0rem 1.5rem;
+    border-radius: 0.5rem;
+    width: 90%;
+    height: 80vh;
+    max-height: 80vh;
+  }
+
+  &__header {
+    position: relative;
+    h3 {
+      margin-top: -0.5rem;
+      padding-bottom: 0.5rem;
+      padding-right: 1rem;
+      padding-left: 1rem;
+      color: $primary-color;
+      font-size: 1.4rem;
+      box-shadow: inset 0 -1px 1px rgba($color: #000000, $alpha: 0.3);
+    }
+    span.close {
+      position: absolute;
+      color: $secondary-color;
+      background: $primary-color;
+      display: inline-block;
+      width: 20px;
+      height: 15px;
+      text-align: center;
+      padding: 0 auto;
+      font-size: 0.9rem;
+      padding-bottom: 1.2rem;
+      font-weight: 700;
+      right: 0.8rem;
+      border-radius: 50%;
+      cursor: pointer;
+      @include transition-ease(200ms);
+
+      &:hover {
+        color: $primary-color;
+        background: $secondary-color;
+      }
+    }
+  }
+
+  &__body {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    &__group {
+      width: 100%;
+      padding-right: 1rem;
+      padding-left: 1rem;
+
+      label {
+        font-size: 0.85rem;
+        color: lighten($color: #000, $amount: 10%);
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    &__input {
+      display: block;
+      padding: 0.5rem 0.8rem;
+      font-size: 0.7rem;
+      width: 100%;
+      border-radius: 0.3rem;
+      border: 0;
+      box-shadow: inset 0 0 0.1rem rgba($color: #000000, $alpha: 0.8);
+      outline: 0;
+      font-family: $font;
+      @include transition-ease(400ms);
+      position: relative;
+      font-size: 1rem;
+
+      &:focus {
+        box-shadow: 0 0 0 2px $primary-color;
+
+        &::before {
+          content: "Please hello";
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: red;
+        }
+      }
+    }
+
+    &__select {
+      display: block;
+      padding: 0.5rem 0.8rem;
+      font-size: 0.8rem;
+      width: 100%;
+      border-radius: 0.3rem;
+      border: 0;
+      box-shadow: inset 0 0 0.1rem rgba($color: #000000, $alpha: 0.8);
+      outline: 0;
+      font-family: $font;
+      @include transition-ease(400ms);
+      position: relative;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 90%;
+      margin: 0 auto;
+      background: $primary-color;
+      border-radius: 0.35rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      text-align: center;
+      width: 90%;
+      border: 0;
+      color: $white;
+      @include transition-ease(400ms);
+      margin-top: 0.8rem;
+      margin-bottom: 0.5rem;
+
+      &:hover {
+        background: darken($color: $secondary-color, $amount: 50%);
+        transform: translateY(-3px);
+      }
+    }
+  }
+}

@@ -1,0 +1,180 @@
+@include media-md {
+  .container {
+    width: 90%;
+  }
+
+  header {
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: 3rem;
+    z-index: 5;
+
+    .nav {
+      position: static;
+      background: transparent;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      right: 0;
+      transform: translateX(0);
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      padding-bottom: 0;
+
+      .menu-nav {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        width: 240%;
+        padding-bottom: 0rem;
+        margin-left: 2rem;
+
+        &__item {
+          margin: 0 0.2rem;
+        }
+
+        &__link {
+          font-weight: 600;
+          font-size: 1rem;
+          color: $primary-color;
+          padding: 0.5rem;
+          border-radius: 0.1rem;
+
+          &:hover {
+            color: $secondary-color;
+            border-bottom: 2px solid $primary-color;
+          }
+        }
+      }
+
+      &__btns {
+        flex-direction: row;
+        justify-content: flex-end;
+
+        a {
+          margin: 0;
+        }
+
+        .btn-primary {
+          font-size: 0.9rem;
+          text-align: center;
+          width: auto;
+          background: $secondary-color;
+        }
+      }
+    }
+
+    .menu-btn {
+      display: none;
+    }
+  }
+
+  //   Modal Section
+  .modal {
+    &__content {
+      width: 50%;
+    }
+
+    &__header {
+      span.close {
+        color: lighten($color: $secondary-color, $amount: 20%);
+        background: darken($color: $primary-color, $amount: 30%);
+      }
+    }
+  }
+
+  //   Hero Section
+  .hero {
+    &__heading {
+      h2 {
+        font-size: 3rem;
+      }
+
+      .btn-primary {
+        padding: 0.8rem 1rem;
+        font-size: 1.4rem;
+        width: 30%;
+      }
+    }
+  }
+
+  //   Tips Section
+  .tips {
+    &__content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0 1rem;
+    }
+
+    &__card {
+      p {
+        color: darken($color: $white, $amount: 2%);
+      }
+    }
+  }
+
+  //   Partner Section
+  .partner {
+    width: 100%;
+    height: 100%;
+
+    &__heading {
+      h3 {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        span {
+          color: $secondary-color;
+        }
+      }
+    }
+
+    &__content {
+      height: 50vh;
+      background-size: cover;
+
+      .btn-primary {
+        width: 30%;
+        position: absolute;
+        bottom: -1rem;
+      }
+    }
+  }
+
+  // Footer
+  footer {
+    margin-top: 2rem;
+  }
+}
+
+@include media-lg {
+  .container {
+    width: 80%;
+  }
+
+  //   Modal Section
+  .modal {
+    &__content {
+      width: 40%;
+    }
+  }
+
+  //   Partner Section
+  .partner {
+    width: 100%;
+    height: 100%;
+
+    &__heading {
+      h3 {
+        font-size: 2rem;
+      }
+    }
+
+    &__content {
+      background-size: cover;
+      background-position: center center;
+    }
+  }
+}

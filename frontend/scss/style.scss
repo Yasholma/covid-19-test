@@ -1,0 +1,72 @@
+$primary-color: hsl(212, 89%, 35%);
+$secondary-color: hsl(0, 87%, 67%);
+// $secondary-color: hsl(35, 84%, 62%);
+$white: #fff;
+$font: Quicksand, sans-serif;
+$media-md: 48em;
+$media-lg: 64em;
+$media-xl: 90em;
+
+@mixin transition-ease($time) {
+  transition: all $time ease-in-out;
+}
+
+@mixin media-md {
+  @media screen and (min-width: $media-md) {
+    @content;
+  }
+}
+
+@mixin media-lg {
+  @media screen and (min-width: $media-lg) {
+    @content;
+  }
+}
+
+@mixin media-xl {
+  @media screen and (min-width: $media-xl) {
+    @content;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: $font;
+  line-height: 1.5;
+  font-size: 1em;
+  background: #eee;
+  width: 100%;
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: darken($color: $white, $amount: 10%);
+  text-decoration: none;
+}
+
+main {
+  margin-top: 5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+button {
+  cursor: pointer;
+  font: $font;
+}
+
+@import "./header";
+@import "./modal";
+@import "./main";
+@import "./responsive";
