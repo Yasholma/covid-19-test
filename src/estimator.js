@@ -21,7 +21,7 @@ function icu(container) {
 }
 
 function dollarsInFlight(container, avgIncome, income, inDays) {
-  return Math.trunc(container.infectionsByRequestedTime * avgIncome * income * inDays);
+  return +Math.trunc(container.infectionsByRequestedTime * avgIncome * income * inDays);
 }
 
 const computeCurrentlyInfected = (field, value) => field * value;
