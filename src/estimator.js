@@ -38,7 +38,7 @@ const covid19ImpactEstimator = (data) => {
   const sCasesForVenBRT = Math.trunc(0.02 * sInfectionsByRequestedTime);
   const sImpactCasesForVenBRT = Math.trunc(0.02 * sImpactInfectionsByRequestedTime);
 
-  const usd = avgDailyIncomeInUSD * avd * getTimeInDays(periodType, timeToElapse);
+  const usd = avgDailyIncomeInUSD * avd * Math.trunc(getTimeInDays(periodType, timeToElapse));
   const sDollarsInFlight = +(sInfectionsByRequestedTime * usd).toFixed(2);
   const sImpactDollarsInFlight = +(sImpactInfectionsByRequestedTime * usd).toFixed(2);
 
