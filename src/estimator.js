@@ -28,13 +28,13 @@ const covid19ImpactEstimator = (data) => {
   const sImpactHospitalBedsByRT = Math.trunc(nOfAvailableBeds - sImpactCasesByRequestedTime);
 
   // Challenge 3
-  const sICU = Math.trunc(0.05 * sInfectionsByRequestedTime);
+  const sICU = Math.trunc(0.5 * sInfectionsByRequestedTime);
   const sCasesForICUByRequestedTime = sICU;
-  const sIICU = Math.trunc(0.05 * sImpactInfectionsByRequestedTime);
+  const sIICU = Math.trunc(0.5 * sImpactInfectionsByRequestedTime);
   const sImpactCasesForICUByRequestedTime = sIICU;
 
-  const sCasesForVentilatorsByRequestedTime = Math.trunc(0.02 * sInfectionsByRequestedTime);
-  const sImpactCasesForVenBRT = Math.trunc(0.02 * sImpactInfectionsByRequestedTime);
+  const sCasesForVentilatorsByRequestedTime = Math.trunc(0.2 * sInfectionsByRequestedTime);
+  const sImpactCasesForVenBRT = Math.trunc(0.2 * sImpactInfectionsByRequestedTime);
 
   const inUSD = (avgDailyIncomeInUSD * timeToElapse);
   const sDollarsInFlight = +(sInfectionsByRequestedTime * inUSD).toFixed(2);
