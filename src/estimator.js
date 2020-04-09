@@ -7,7 +7,8 @@ const covid19ImpactEstimator = (data) => {
     reportedCases,
     totalHospitalBeds,
     region: {
-      avgDailyIncomeInUSD
+      avgDailyIncomeInUSD,
+      avgDailyIncomePopulation
     }
   } = data;
 
@@ -32,13 +33,14 @@ const covid19ImpactEstimator = (data) => {
   const sIInfectionsBRT = severeImpactCurrentlyInfected * getTimeInDays(periodType, timeToElapse);
   const sICU = Math.trunc(0.05 * sInfectionsBRT);
   const sIICU = Math.trunc(0.05 * sIInfectionsBRT);
+
   const sCasesForICUByRequestedTime = sICU;
   const sImpactCasesForICUByRequestedTime = sIICU;
 
   const sCasesForVenBRT = Math.trunc(0.02 * sInfectionsBRT);
   const sImpactCasesForVenBRT = Math.trunc(0.02 * sIInfectionsBRT);
 
-  const inUSD = (avgDailyIncomeInUSD * timeToElapse);
+  const inUSD = avgDailyIncomeInUSD * avgDailyIncomePopulation * timeInDays;
   const sDollarsInFlight = +(sInfectionsByRequestedTime * inUSD).toFixed(2);
   const sImpactDollarsInFlight = +(sImpactInfectionsByRequestedTime * inUSD).toFixed(2);
 
