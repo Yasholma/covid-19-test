@@ -24,7 +24,7 @@ const covid19ImpactEstimator = (data) => {
   const sCasesByRequestedTime = Math.floor(0.15 * sInfectionsByRequestedTime);
   const sImpactCasesByRequestedTime = Math.floor(0.15 * sImpactInfectionsByRequestedTime);
 
-  const numberOfAvailableBeds = 0.35 * totalHospitalBeds;
+  const numberOfAvailableBeds = Math.floor(0.35 * totalHospitalBeds);
 
   const sHospitalBedsByRequestedTime = numberOfAvailableBeds - sCasesByRequestedTime;
   const sImpactHospitalBedsByRequestedTime = numberOfAvailableBeds - sImpactCasesByRequestedTime;
@@ -39,8 +39,8 @@ const covid19ImpactEstimator = (data) => {
   const sImpactCasesForVentilatorsByRequestedTime = 0.2 * sImpactInfectionsByRequestedTime;
 
   const inUSD = (avgDailyIncomeInUSD * timeToElapse);
-  const sDollarsInFlight = sInfectionsByRequestedTime * inUSD;
-  const sImpactDollarsInFlight = sImpactInfectionsByRequestedTime * inUSD;
+  const sDollarsInFlight = (sInfectionsByRequestedTime * inUSD).toFixed(2);
+  const sImpactDollarsInFlight = (sImpactInfectionsByRequestedTime * inUSD).toFixed(2);
 
   return {
     data,
