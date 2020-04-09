@@ -20,8 +20,8 @@ function icu(container) {
   return Math.trunc(0.05 * container.infectionsByRequestedTime);
 }
 
-function dollarsInFlight(container, avgIncome, income, inDays) {
-  return +Math.trunc(container.infectionsByRequestedTime * avgIncome * income * inDays);
+function dollarsInFlight(container, avgIncome, income, days) {
+  return +Math.trunc((container.infectionsByRequestedTime * avgIncome * income) / days);
 }
 
 const computeCurrentlyInfected = (field, value) => field * value;
