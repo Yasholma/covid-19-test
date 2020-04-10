@@ -11,10 +11,12 @@
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
+      rel="preconnect stylesheet"
+      async
+      preload
     />
     <!--  -->
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/style.min.css" preload asyn />
   </head>
   <body>
     <header>
@@ -169,17 +171,15 @@
     <footer>
       <div class="container">
         <div class="attribution">
-          <a href="https://buildforsdg.andela.com/" target="_blank"
-            >BuildForSDG</a
-          >
+          <a href="">BuildForSDG</a>
           Coded by
-          <a href="https://twitter.com/yasholma" target="_blank"
+          <a href="https://twitter.com/yasholma"
             ><span>Yahaya Hyellamoda Yohanna</span></a
           >.
         </div>
       </div>
     </footer>
     <!-- Main.js -->
-    <script src="./js/main.js"></script>
+    <script src="./js/main.js" async></script>
   </body>
 </html>

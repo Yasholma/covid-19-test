@@ -1,36 +1,36 @@
-const menuBtn = document.querySelector(".menu-btn");
-const hamburger = document.querySelector(".menu-btn__burger");
-const mobileNav = document.querySelector(".nav");
-const navLinks = document.querySelectorAll(".menu-nav__link");
-const insertModalBtn = document.querySelector(".nav__btns > a");
-const insertDataModal = document.querySelector(".modal");
-const modalCloseBtn = document.querySelector(".modal span.close");
-const openModalBtn = document.querySelectorAll(".openModal");
-const estimateBtn = document.getElementById("estimate-btn");
-const dataForm = document.querySelector("#data-form");
+var menuBtn = document.querySelector(".menu-btn");
+var hamburger = document.querySelector(".menu-btn__burger");
+var mobileNav = document.querySelector(".nav");
+// var navLinks = document.querySelectorAll(".menu-nav__link");
+var insertModalBtn = document.querySelector(".nav__btns > a");
+var insertDataModal = document.querySelector(".modal");
+var modalCloseBtn = document.querySelector(".modal span.close");
+var openModalBtn = document.querySelectorAll(".openModal");
+// var estimateBtn = document.getElementById("estimate-btn");
+// var dataForm = document.querySelector("#data-form");
 
-document.addEventListener("DOMContentLoaded", function () {
-    menuBtn.addEventListener("click", toggleMenu);
-    navLinks.forEach(link => link.addEventListener("click", closeMenu));
-    insertModalBtn.addEventListener("click", openInsertModal);
-    openModalBtn.forEach(btn => btn.addEventListener("click", openModal));
-    modalCloseBtn.addEventListener("click", closeModal);
-    estimateBtn.addEventListener("click", estimate)
-});
 
-const validateFields = (...fields) => fields.every(field => field.value.trim() !== "");
-const clearFields = (...fields) => fields.forEach(field => field.value === "");
+menuBtn.addEventListener("click", toggleMenu);
+// navLinks.forEach(link => link.addEventListener("click", closeMenu));
+insertModalBtn.addEventListener("click", openInsertModal);
+openModalBtn.forEach(btn => btn.addEventListener("click", openModal));
+modalCloseBtn.addEventListener("click", closeModal);
+// estimateBtn.addEventListener("click", estimate)
+
+
+var validateFields = (...fields) => fields.every(field => field.value.trim() !== "");
+var clearFields = (...fields) => fields.forEach(field => field.value === "");
 
 // Form Handling
 function estimate(e) {
     e.preventDefault()
-    const population = document.getElementById("population");
-    const timeElapse = document.getElementById("time-elapse");
-    const reportedCases = document.getElementById("reported-cases");
-    const totalHospitalBeds = document.getElementById("total-hospital-beds");
-    const periodType = document.getElementById("period-type");
+    var population = document.getElementById("population");
+    var timeElapse = document.getElementById("time-elapse");
+    var reportedCases = document.getElementById("reported-cases");
+    var totalHospitalBeds = document.getElementById("total-hospital-beds");
+    var periodType = document.getElementById("period-type");
     let checkFields = validateFields(population, timeElapse, reportedCases, totalHospitalBeds, periodType);
-    const data = {
+    var data = {
         region: {
             name: 'Africa',
             avgAge: 19.7,
@@ -98,4 +98,3 @@ function openInsertModal(event) {
     closeMenu();
     openModal()
 }
-
