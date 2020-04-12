@@ -86,13 +86,17 @@ header {
       }
 
       .btn-primary {
-        background: $secondary-color;
+        background: transparent;
         border-radius: 0.35rem;
         padding: 0.35rem 1rem;
         font-size: 1.2rem;
         text-align: center;
         width: 90%;
         @include transition-ease(300ms);
+
+        &:hover {
+          background: #000;
+        }
       }
     }
   }

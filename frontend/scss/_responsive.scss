@@ -61,7 +61,13 @@
           font-size: 0.9rem;
           text-align: center;
           width: auto;
-          background: $secondary-color;
+          background: $primary-color;
+          color: $white;
+
+          &:hover {
+            background: transparent;
+            color: $primary-color;
+          }
         }
       }
     }
@@ -133,9 +139,9 @@
       background-size: cover;
 
       .btn-primary {
-        width: 30%;
+        width: 20%;
         position: absolute;
-        bottom: -1rem;
+        bottom: 0.3rem;
       }
     }
   }

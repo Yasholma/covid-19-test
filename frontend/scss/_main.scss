@@ -26,15 +26,21 @@
     }
 
     .btn-primary {
-      background: $secondary-color;
+      background: transparent;
+      border: 1px solid $secondary-color;
       color: $white;
-      border-radius: 0.35rem;
-      padding: 0.35rem 1rem;
+      border-radius: 1rem;
+      padding: 0.5rem 1rem;
       font-size: 1.2rem;
       text-align: center;
-      width: 90%;
-      border: 0;
+      width: 50%;
+      outline: 0;
       @include transition-ease(300ms);
+
+      &:hover {
+        background: $primary-color;
+        border-color: $primary-color;
+      }
     }
   }
 }
@@ -116,19 +122,24 @@
     position: relative;
 
     .btn-primary {
-      background: $secondary-color;
+      background: #212226;
+      border: 1px solid #212226;
       color: $white;
       border-radius: 0.35rem;
       padding: 0.35rem 1rem;
       font-size: 1.2rem;
       text-align: center;
       width: auto;
-      border: 0;
       @include transition-ease(300ms);
       position: absolute;
-      bottom: 1.6rem;
+      bottom: 0.2rem;
       left: 50%;
       transform: translateX(-50%);
+      outline: 0;
+
+      &:hover {
+        background: transparent;
+      }
     }
   }
 }
@@ -150,8 +161,5 @@ footer {
   .attribution a {
     color: $white;
     display: inline;
-    // span {
-    //   color: $secondary-color;
-    // }
   }
 }
